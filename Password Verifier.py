@@ -1,16 +1,25 @@
-import string
-import os  
+# Password Verifier
 
-# Define the attack password
-attack = "attack"  # Now "attack" is the correct password
+# These lines of code are for encrypting the code
+def caesar_decipher(text, shift):
+    return ''.join(
+        chr(((ord(c) - ord('a') - shift) % 26) + ord('a')) if c.isalpha() else c
+        for c in text.lower()
+    )
 
-# Ask for the password
-other_password = input("What is the password for this database? ")
+with open("secret.py") as f:
+    encrypted = f.read().strip()
 
-if other_password == attack:
-    print("Congratulations for logging into the SDA portal!!!")
-    # Delete the secret file for security reasons after access
-    os.remove("secret.py")
+password = input("WHat is the password for this portal?")
+shift = 3  # Set this to the shift you used when encrypting the password
+decrypted_password = caesar_decipher(encrypted, shift)
+
+#Checking if user is reliable or not
+if password == decrypted_password:
+    print("Congratulations for logging into the SDA portal!")
+
 else:
-    print("You have come to the wrong program or have the wrong password.")
-    print("Unauthorized access may result in serious consequences.")
+    print("You are not authorized to access this page! Leave immediately or serious allegations may be put on you!") 
+    
+    # Exit the program
+    exit()
