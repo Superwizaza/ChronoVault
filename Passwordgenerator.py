@@ -9,7 +9,7 @@ t = turtle.Pen()
 t.speed(0)
 turtle.bgcolor('black')
 
-# Set up a list of valid Python color names
+# List of Python color names
 colors = ["red", "purple", "blue", "green", "yellow", "orange",
           "white", "pink", "gray"]
 
@@ -57,13 +57,14 @@ if secret_pin == "ZXCVBNMlkjhgfdsaQWERTYUIOP1092387456":  # Valid alphanumeric p
         return encrypted_text
 
     message = "password"
+          encrypted_code = (caesar_cipher(message, shift))
     shift = 3
     print("Your new password is", caesar_cipher(message, shift))
     with open("secret.py", "w") as file:
         file.write(caesar_cipher(message, shift))
 
 else:
-    print("Warning: You have come to the wrong program! Unauthorized access may have consequences.")
+    print("Warning: You have come to the wrong program! Unauthorized access may have serious consequences!")
     print("This program is going to close now!")
 
     # Exit the program
